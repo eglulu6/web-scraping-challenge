@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Mission to Mar</title>
+</head>
+<body><!-- whole page -->
+    
+    <div class="row container text-center">  <!-- ROW_1 Header-->
+        <header style="background-color: powderblue; text-align:center;">
+            <h1 class="">
+                Mission to Mars
+            </h1>
+            <button type="button" class="btn btn-primary" href="/scrape">Refresh Data</button>
+        </header>
+    </div>  <!-- ROW_1 Header-->
+
+    <div class="row">  <!-- ROW_2 Mars Article-->
+        <div class="col-md-8">
+            <h3>Heres the latest about Mars:</h3>
+            <h4>'{{news.latest_title}}'</h4>
+            <p>'{{news.latest_paragraph}}</p>
+        </div>
+    </div><!-- ROW_2 Mars Article-->
+
+    <div class="row"><!-- ROW_3 Img & Facts tbl-->
+
+        <div class="col-md-8">
+            <h4>Featured Mars Image</h4>
+            <div>
+                <img src="{{image.image}}" alt="Featured Mars Image">
+            </div>
+        </div>
+
+        <!--Facts tbl start -->
+        <div class="col-md-4 table-responsive"><!--Facts tbl-->
+            <table class="dataframe table table-striped table-dark table-hover table-sm" style="text-align: center;" > 
+            '{{facts_html_table}}'
+            </table>
+        </div>
+        <!--Facts tbl end -->
+
+    </div><!-- ROW_3 Img & Facts tbl-->
+
+    {% for hemi in hemi_dict %}
+    <div class="row mx-auto"><!-- ROWs hemispheres-->
+        <div>
+            <img src="{{hemi.img_url}}" class="img-fluid" alt="{{hemi.title}}">
+        </div>
+    </div><!-- ROWs hemispheres-->
+    {% endfor %}
+
+</body><!-- whole page -->
+</html>
